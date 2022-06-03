@@ -1,0 +1,1235 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "highpoint",
+        "description": "Highpoint API",
+        "version": "0.0.1",
+        "contact": {}
+    },
+    "servers": [
+        {
+            "url": "https://builder-toolkit.partner.aws.dev/"
+        }
+    ],
+    "paths": {
+        "/get_user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "get's a user object given a user_id",
+                "description": "returns details of a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_users": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "lists users",
+                "description": "returns details of a user",
+                "parameters": [
+                    {
+                        "name": "all",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/user_list_output"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create_user": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "creates a user",
+                "description": "creates a user",
+                "requestBody": {
+                    "description": "User object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/update_user": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "updates a user",
+                "description": "updates a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "User object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/delete_user": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "updates a user",
+                "description": "updates a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_teams": {
+            "get": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "returns a list of minimal team objects",
+                "parameters": [
+                    {
+                        "name": "all",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/team_list_output"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_team": {
+            "get": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "returns a team object given a team id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/team"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create_team": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "creates a team given a team schema",
+                "requestBody": {
+                    "description": "Team object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/team_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/delete_team": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "deletes a team given a team id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/request_team_access": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "requests access to a team  given a team id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/update_team": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "updates a team definition given properties to update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Team object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/team_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/add_team_members": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "adds members to a team",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "list of team or user ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/remove_team_members": {
+            "post": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "remove members to a team",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "list of team or user ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_projects": {
+            "get": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "returns a list of projects",
+                "description": "returns a list of projects",
+                "parameters": [
+                    {
+                        "name": "have_access",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/project_list_output"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_project": {
+            "get": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "returns a project given an ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/project"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create_project": {
+            "post": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "creates a project given a project definition",
+                "requestBody": {
+                    "description": "Team object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/project_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/update_project": {
+            "post": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "updates a project given a project definition",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Team object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/project_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/delete_project": {
+            "post": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "deletes a project given an ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/request_project_access": {
+            "post": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "requests access to a project for a given user or team",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_project_groups": {
+            "get": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "returns a list of minimal project group objects",
+                "parameters": [
+                    {
+                        "name": "all",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "principal",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "nil",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/project_group_list_output"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_project_group": {
+            "get": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "returns a project group object given a project group id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/project_group"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create_project_group": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "creates a project_group given a project_group schema",
+                "requestBody": {
+                    "description": "Project group object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/project_group_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/delete_project_group": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "deletes a project_group given a project group id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/request_project_group_access": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "requests access to a project group given a project group id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/update_project_group": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "updates a project group definition given properties to update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Project group object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/project_group_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/add_project_group_members": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "adds members to a project_group",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "list of project group or user ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/remove_project_group_members": {
+            "post": {
+                "tags": [
+                    "project_group"
+                ],
+                "summary": "remove members to a project group",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "list of project group or user ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_project_type": {
+            "get": {
+                "tags": [
+                    "project_type"
+                ],
+                "summary": "returns a project type object given a project type id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/project_type"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_project_types": {
+            "get": {
+                "tags": [
+                    "project_type"
+                ],
+                "summary": "returns a project type object given a project type id",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/project_type_list_output"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/create_association": {
+            "post": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "creates an association between a project/project group and a user/team",
+                "requestBody": {
+                    "description": "association object in json format",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/association_input"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "association_id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/delete_association": {
+            "post": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "creates an association between a project/project group and a user/team",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "association_id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_association": {
+            "get": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "returns an association object given an association id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/association"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/list_associations": {
+            "get": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "returns a list of association objects",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/association"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/get_projects_for_principal": {
+            "get": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "returns projects associated with a principal (user or team)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get_users_for_resource": {
+            "get": {
+                "tags": [
+                    "association"
+                ],
+                "summary": "returns users associated with a resource (project or project group)",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": []
+}

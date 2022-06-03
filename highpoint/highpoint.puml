@@ -1,0 +1,564 @@
+@startuml
+!theme aws-orange
+skinparam classBackgroundColor black
+hide empty members
+set namespaceSeparator none
+
+interface "/get_user" {
+}
+
+class "GET /get_user" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_user" ..> id
+
+"/get_user" ..> "GET /get_user"
+
+
+
+interface "/list_users" {
+}
+
+class "GET /list_users" {
+.. query ..
+{field} boolean all
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_users" ..> "GET /list_users"
+
+
+
+interface "/create_user" {
+}
+
+class "POST /create_user" {
+
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+
+
+"/create_user" ..> "POST /create_user"
+
+
+
+interface "/update_user" {
+}
+
+class "POST /update_user" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /update_user" ..> id
+
+"/update_user" ..> "POST /update_user"
+
+
+
+interface "/delete_user" {
+}
+
+class "POST /delete_user" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /delete_user" ..> id
+
+"/delete_user" ..> "POST /delete_user"
+
+
+
+interface "/list_teams" {
+}
+
+class "GET /list_teams" {
+.. query ..
+{field} boolean <b>all</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_teams" ..> "GET /list_teams"
+
+
+
+interface "/get_team" {
+}
+
+class "GET /get_team" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_team" ..> id
+
+"/get_team" ..> "GET /get_team"
+
+
+
+interface "/create_team" {
+}
+
+class "POST /create_team" {
+
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+
+
+"/create_team" ..> "POST /create_team"
+
+
+
+interface "/delete_team" {
+}
+
+class "POST /delete_team" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /delete_team" ..> id
+
+"/delete_team" ..> "POST /delete_team"
+
+
+
+interface "/request_team_access" {
+}
+
+class "POST /request_team_access" {
+.. query ..
+{field} id <b>id</b>
+{field} string <b>message</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"POST /request_team_access" ..> id
+
+"/request_team_access" ..> "POST /request_team_access"
+
+
+
+interface "/update_team" {
+}
+
+class "POST /update_team" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /update_team" ..> id
+
+"/update_team" ..> "POST /update_team"
+
+
+
+interface "/add_team_members" {
+}
+
+class "POST /add_team_members" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /add_team_members" ..> id
+
+"/add_team_members" ..> "POST /add_team_members"
+
+
+
+interface "/remove_team_members" {
+}
+
+class "POST /remove_team_members" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /remove_team_members" ..> id
+
+"/remove_team_members" ..> "POST /remove_team_members"
+
+
+
+interface "/list_projects" {
+}
+
+class "GET /list_projects" {
+.. query ..
+{field} boolean have_access
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_projects" ..> "GET /list_projects"
+
+
+
+interface "/get_project" {
+}
+
+class "GET /get_project" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_project" ..> id
+
+"/get_project" ..> "GET /get_project"
+
+
+
+interface "/create_project" {
+}
+
+class "POST /create_project" {
+
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+
+
+"/create_project" ..> "POST /create_project"
+
+
+
+interface "/update_project" {
+}
+
+class "POST /update_project" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /update_project" ..> id
+
+"/update_project" ..> "POST /update_project"
+
+
+
+interface "/delete_project" {
+}
+
+class "POST /delete_project" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /delete_project" ..> id
+
+"/delete_project" ..> "POST /delete_project"
+
+
+
+interface "/request_project_access" {
+}
+
+class "POST /request_project_access" {
+.. query ..
+{field} id <b>id</b>
+{field} string <b>user_id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /request_project_access" ..> id
+
+"/request_project_access" ..> "POST /request_project_access"
+
+
+
+interface "/list_project_groups" {
+}
+
+class "GET /list_project_groups" {
+.. query ..
+{field} boolean all
+{field} string principal
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_project_groups" ..> "GET /list_project_groups"
+
+
+
+interface "/get_project_group" {
+}
+
+class "GET /get_project_group" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_project_group" ..> id
+
+"/get_project_group" ..> "GET /get_project_group"
+
+
+
+interface "/create_project_group" {
+}
+
+class "POST /create_project_group" {
+
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+
+
+"/create_project_group" ..> "POST /create_project_group"
+
+
+
+interface "/delete_project_group" {
+}
+
+class "POST /delete_project_group" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /delete_project_group" ..> id
+
+"/delete_project_group" ..> "POST /delete_project_group"
+
+
+
+interface "/request_project_group_access" {
+}
+
+class "POST /request_project_group_access" {
+.. query ..
+{field} id <b>id</b>
+{field} string <b>message</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"POST /request_project_group_access" ..> id
+
+"/request_project_group_access" ..> "POST /request_project_group_access"
+
+
+
+interface "/update_project_group" {
+}
+
+class "POST /update_project_group" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /update_project_group" ..> id
+
+"/update_project_group" ..> "POST /update_project_group"
+
+
+
+interface "/add_project_group_members" {
+}
+
+class "POST /add_project_group_members" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /add_project_group_members" ..> id
+
+"/add_project_group_members" ..> "POST /add_project_group_members"
+
+
+
+interface "/remove_project_group_members" {
+}
+
+class "POST /remove_project_group_members" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /remove_project_group_members" ..> id
+
+"/remove_project_group_members" ..> "POST /remove_project_group_members"
+
+
+
+interface "/get_project_type" {
+}
+
+class "GET /get_project_type" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_project_type" ..> id
+
+"/get_project_type" ..> "GET /get_project_type"
+
+
+
+interface "/list_project_types" {
+}
+
+class "GET /list_project_types" {
+
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_project_types" ..> "GET /list_project_types"
+
+
+
+interface "/create_association" {
+}
+
+class "POST /create_association" {
+
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+
+
+"/create_association" ..> "POST /create_association"
+
+
+
+interface "/delete_association" {
+}
+
+class "POST /delete_association" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+201: {field} <i>not specified</i> 
+}
+
+"POST /delete_association" ..> id
+
+"/delete_association" ..> "POST /delete_association"
+
+
+
+interface "/get_association" {
+}
+
+class "GET /get_association" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_association" ..> id
+
+"/get_association" ..> "GET /get_association"
+
+
+
+interface "/list_associations" {
+}
+
+class "GET /list_associations" {
+
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+
+
+"/list_associations" ..> "GET /list_associations"
+
+
+
+interface "/get_projects_for_principal" {
+}
+
+class "GET /get_projects_for_principal" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_projects_for_principal" ..> id
+
+"/get_projects_for_principal" ..> "GET /get_projects_for_principal"
+
+
+
+interface "/get_users_for_resource" {
+}
+
+class "GET /get_users_for_resource" {
+.. query ..
+{field} id <b>id</b>
+.. responses ..
+200: {field} <i>not specified</i> 
+}
+
+"GET /get_users_for_resource" ..> id
+
+"/get_users_for_resource" ..> "GET /get_users_for_resource"
+
+
+
+@enduml
